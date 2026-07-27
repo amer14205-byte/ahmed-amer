@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Download, Trash2, Search, Users, CheckCircle, XCircle, Save, Settings, Heart } from 'lucide-react';
+import { X, Download, Trash2, Search, Users, CheckCircle, XCircle, Save, Settings, Heart, Lock } from 'lucide-react';
 import { WeddingConfig, RsvpRecord } from '../types';
 
 interface AdminModalProps {
@@ -24,12 +24,83 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   if (!isOpen) return null;
 
   const isAr = lang === 'ar';
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [pinInput, setPinInput] = useState('');
+  const [pinError, setPinError] = useState(false);
+
   const [activeTab, setActiveTab] = useState<'rsvps' | 'config'>('rsvps');
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState<'all' | 'attending' | 'declined'>('all');
 
   // Form state for config edits
   const [formData, setFormData] = useState<WeddingConfig>(config);
+
+  const handleUnlock = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (pinInput.trim() === '2026') {
+      setIsUnlocked(true);
+      setPinError(false);
+    } else {
+      setPinError(true);
+    }
+  };
+
+  if (!isUnlocked) {
+    return (
+      <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md flex items-center justify-center p-4">
+        <div className="bg-[#F9F7F2] border-2 border-[#A68B67] w-full max-w-md p-8 shadow-2xl relative rounded-sm text-center">
+          <button
+            onClick={onClose}
+            className="absolute top-4 left-4 rtl:left-auto rtl:right-4 p-2 text-[#2D2D2D] hover:bg-[#A68B67] hover:text-white transition-colors rounded-full"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <div className="w-14 h-14 bg-[#2D2D2D] text-[#A68B67] rounded-full mx-auto flex items-center justify-center mb-4 shadow-md">
+            <Lock className="w-7 h-7" />
+          </div>
+
+          <h3 className="text-xl font-serif-en font-bold text-[#2D2D2D] mb-1">
+            {isAr ? 'لوحة تحكم الإدارة' : 'Admin Protection'}
+          </h3>
+          <p className="text-xs text-[#A68B67] uppercase tracking-widest mb-6 font-semibold">
+            {isAr ? 'يرجى إدخال رمز الحماية (PIN)' : 'Enter 4-digit PIN Code to access'}
+          </p>
+
+          <form onSubmit={handleUnlock} className="space-y-4">
+            <div>
+              <input
+                type="password"
+                maxLength={6}
+                value={pinInput}
+                onChange={(e) => {
+                  setPinInput(e.target.value);
+                  setPinError(false);
+                }}
+                placeholder="PIN"
+                className={`w-full px-4 py-3 text-center text-2xl tracking-[0.5em] font-mono bg-white border ${
+                  pinError ? 'border-red-500 bg-red-50 font-sans' : 'border-[#A68B67]/40'
+                } focus:outline-none focus:border-[#A68B67]`}
+                autoFocus
+              />
+              {pinError && (
+                <p className="text-xs text-red-600 mt-2 font-semibold">
+                  {isAr ? 'رمز الحماية غير صحيح (الرمز الافتراضي: 2026)' : 'Invalid PIN (Default: 2026)'}
+                </p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 bg-[#A68B67] text-white font-semibold text-xs uppercase tracking-[0.2em] hover:bg-[#8C7352] transition-colors"
+            >
+              {isAr ? 'دخول لوحة التحكم' : 'Unlock Dashboard'}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   const totalAttendingGuests = rsvps
     .filter((r) => r.attendance === 'attending')
