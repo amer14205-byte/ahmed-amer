@@ -1,0 +1,6 @@
+{
+  "name": "Wedding Invitation",
+  "description": "An elegant, interactive wedding invitation website featuring countdown, RSVP form, venue details, event schedule, photo story, dress code, and gift registry.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

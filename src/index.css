@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-serif-display {
+    font-family: 'Cormorant Garamond', 'Playfair Display', 'Amiri', Georgia, serif;
+  }
+  .font-arabic-serif {
+    font-family: 'Amiri', serif;
+  }
+  .font-sans-editorial {
+    font-family: 'Plus Jakarta Sans', 'Alexandria', sans-serif;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Alexandria', sans-serif;
+  background-color: #F9F7F2;
+  color: #2D2D2D;
+  overflow-x: hidden;
+}
+
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F3EFE7;
+}
+::-webkit-scrollbar-thumb {
+  background: #A68B67;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8E7250;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.03); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+
+@layer base {
+  :root {
+    --bg-primary: #F9F7F2;
+    --bg-secondary: #F3EFE7;
+    --text-primary: #2D2D2D;
+    --accent-gold: #A68B67;
+    --accent-gold-light: #CBB292;
+    --border-gold: rgba(166, 139, 103, 0.25);
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Alexandria', sans-serif;
+    overflow-x: hidden;
+  }
+
+  .font-serif-en {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  }
+
+  .font-serif-ar {
+    font-family: 'Amiri', 'Alexandria', serif;
+  }
+
+  .font-sans-ar {
+    font-family: 'Alexandria', sans-serif;
+  }
+}
+
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F9F7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #A68B67;
+  border-radius: 3px;
+}
+
+/* Elegant Grain Overlay */
+.bg-grain {
+  background-image: radial-gradient(rgba(166, 139, 103, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Decorative Gold Hairline Divider */
+.border-gold-subtle {
+  border-color: rgba(166, 139, 103, 0.25);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #A68B67 0%, #8C704E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth Fade in animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
