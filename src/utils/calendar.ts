@@ -86,7 +86,7 @@ export function calculateTimeRemaining(targetDateStr: string): TimeRemaining {
 }
 
 // LocalStorage helpers
-const CONFIG_KEY = 'wedding_invitation_config_v1';
+const CONFIG_KEY = 'wedding_invitation_config_v2';
 const RSVPS_KEY = 'wedding_invitation_rsvps_v1';
 const WISHES_KEY = 'wedding_invitation_wishes_v1';
 

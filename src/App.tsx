@@ -20,7 +20,6 @@ import { VenueDetails } from './components/VenueDetails';
 import { DressCode } from './components/DressCode';
 import { RsvpForm } from './components/RsvpForm';
 import { WishesWall } from './components/WishesWall';
-import { GiftRegistry } from './components/GiftRegistry';
 import { FaqSection } from './components/FaqSection';
 import { AdminModal } from './components/AdminModal';
 import { Footer } from './components/Footer';
@@ -96,7 +95,6 @@ export default function App() {
         <DressCode config={config} lang={lang} />
         <RsvpForm config={config} lang={lang} onAddRsvp={handleAddRsvp} />
         <WishesWall lang={lang} wishes={wishes} onAddWish={handleAddWish} onLikeWish={handleLikeWish} />
-        <GiftRegistry config={config} lang={lang} />
         <FaqSection config={config} lang={lang} />
       </main>
 

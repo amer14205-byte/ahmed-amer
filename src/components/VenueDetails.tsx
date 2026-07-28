@@ -32,11 +32,10 @@ export const VenueDetails: React.FC<VenueDetailsProps> = ({ config, lang }) => {
             <div className="relative border-2 border-[#A68B67]/40 p-2 bg-[#F9F7F2] shadow-sm">
               <div className="relative aspect-16/10 overflow-hidden">
                 <img
-                  src="/src/assets/images/wedding_venue_1785141206090.jpg"
-                  alt="Wedding Venue Hall"
+                  src="/src/assets/images/city_mark_hotel_1785220146208.jpg"
+                  alt="City Mark Hotel Ballroom"
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   onError={(e) => {
-                    // Fallback to Unsplash venue image if local image link differs
                     e.currentTarget.src = 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80';
                   }}
                 />

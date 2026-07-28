@@ -44,7 +44,6 @@ export const Header: React.FC<HeaderProps> = ({
           <a href="#schedule" className="hover:text-[#A68B67] transition-colors">{isAr ? 'البرنامج' : 'Schedule'}</a>
           <a href="#venue" className="hover:text-[#A68B67] transition-colors">{isAr ? 'المكان' : 'Venue'}</a>
           <a href="#dresscode" className="hover:text-[#A68B67] transition-colors">{isAr ? 'الملابس' : 'Dress Code'}</a>
-          <a href="#registry" className="hover:text-[#A68B67] transition-colors">{isAr ? 'الهدايا' : 'Registry'}</a>
           <a href="#rsvp" className="text-[#A68B67] font-semibold hover:underline transition-all">{isAr ? 'تأكيد الحضور' : 'RSVP'}</a>
         </nav>
 

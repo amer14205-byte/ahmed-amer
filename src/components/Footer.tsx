@@ -36,11 +36,9 @@ export const Footer: React.FC<FooterProps> = ({ config, lang }) => {
 
         {/* Footer Navigation Links */}
         <div className="flex flex-wrap justify-center gap-6 sm:gap-10 text-[11px] uppercase tracking-[0.3em] font-sans text-[#F9F7F2]/70">
-          <a href="#story" className="hover:text-[#A68B67] transition-colors">{isAr ? 'قصتنا' : 'Story'}</a>
           <a href="#schedule" className="hover:text-[#A68B67] transition-colors">{isAr ? 'البرنامج' : 'Schedule'}</a>
           <a href="#venue" className="hover:text-[#A68B67] transition-colors">{isAr ? 'المكان' : 'Venue'}</a>
           <a href="#dresscode" className="hover:text-[#A68B67] transition-colors">{isAr ? 'الملابس' : 'Dress Code'}</a>
-          <a href="#registry" className="hover:text-[#A68B67] transition-colors">{isAr ? 'الهدايا' : 'Registry'}</a>
           <a href="#rsvp" className="hover:text-[#A68B67] transition-colors">{isAr ? 'تأكيد الحضور' : 'RSVP'}</a>
         </div>
 
