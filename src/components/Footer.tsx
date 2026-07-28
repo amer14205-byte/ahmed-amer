@@ -1,13 +1,13 @@
 import React from 'react';
-import { Heart, ChevronUp, Sparkles } from 'lucide-react';
-import { WeddingConfig } from '../types';
+import { PersonalInfo } from '../types';
+import { ArrowUp, Heart, ShieldCheck } from 'lucide-react';
 
 interface FooterProps {
-  config: WeddingConfig;
+  personalInfo: PersonalInfo;
   lang: 'ar' | 'en';
 }
 
-export const Footer: React.FC<FooterProps> = ({ config, lang }) => {
+export const Footer: React.FC<FooterProps> = ({ personalInfo, lang }) => {
   const isAr = lang === 'ar';
 
   const scrollToTop = () => {
@@ -15,44 +15,66 @@ export const Footer: React.FC<FooterProps> = ({ config, lang }) => {
   };
 
   return (
-    <footer className="bg-[#2D2D2D] text-[#F9F7F2] py-16 px-6 relative overflow-hidden border-t border-[#A68B67]">
-      <div className="max-w-6xl mx-auto flex flex-col items-center text-center space-y-8">
+    <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 text-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Monogram Badge */}
-        <div className="w-14 h-14 rounded-full border-2 border-[#A68B67] flex items-center justify-center text-[#A68B67] text-lg font-serif-en tracking-widest bg-[#2D2D2D]">
-          {config.monogram}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800/80">
+          
+          {/* Brand */}
+          <div className="flex items-center gap-3 text-center md:text-right rtl:md:text-right ltr:md:text-left">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-amber-500 flex items-center justify-center font-bold text-white text-base shadow-md">
+              AA
+            </div>
+            <div>
+              <span className="font-bold text-white text-base block">
+                {isAr ? personalInfo.nameAr : personalInfo.nameEn}
+              </span>
+              <span className="text-xs text-slate-400">
+                {isAr ? 'مدير إداري | مستشار قانوني ومالي | أخصائي بيانات' : 'Administrative Manager & Legal / Financial Specialist'}
+              </span>
+            </div>
+          </div>
+
+          {/* Quick links */}
+          <div className="flex flex-wrap justify-center gap-6 font-medium text-slate-300">
+            <a href="#about" className="hover:text-amber-400 transition-colors">
+              {isAr ? 'عنّي' : 'About'}
+            </a>
+            <a href="#experience" className="hover:text-amber-400 transition-colors">
+              {isAr ? 'الخبرات' : 'Experience'}
+            </a>
+            <a href="#education" className="hover:text-amber-400 transition-colors">
+              {isAr ? 'المؤهلات' : 'Education'}
+            </a>
+            <a href="#skills" className="hover:text-amber-400 transition-colors">
+              {isAr ? 'المهارات' : 'Skills'}
+            </a>
+            <a href="#contact" className="hover:text-amber-400 transition-colors">
+              {isAr ? 'التواصل' : 'Contact'}
+            </a>
+          </div>
+
+          {/* Scroll to top */}
+          <button
+            onClick={scrollToTop}
+            className="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700 text-slate-300 hover:text-white transition-all cursor-pointer flex items-center gap-2"
+          >
+            <ArrowUp className="w-4 h-4 text-amber-400" />
+            <span>{isAr ? 'للأعلى' : 'Top'}</span>
+          </button>
+
         </div>
 
-        {/* Groom & Bride Names */}
-        <h3 className={`text-2xl sm:text-4xl font-light text-[#F9F7F2] ${isAr ? 'font-serif-ar' : 'font-serif-en'}`}>
-          {isAr ? `${config.groomNameAr} & ${config.brideNameAr}` : `${config.groomNameEn} & ${config.brideNameEn}`}
-        </h3>
+        {/* Bottom copyright */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right rtl:sm:text-right ltr:sm:text-left">
+          <p className="text-slate-500">
+            © {new Date().getFullYear()} {isAr ? personalInfo.nameAr : personalInfo.nameEn}. {isAr ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}
+          </p>
 
-        <p className="text-xs uppercase tracking-[0.3em] font-sans text-[#A68B67] max-w-md">
-          {isAr ? 'نشكركم على محبتكم ومشاركتكم في بداية حياتنا الجديدة' : 'Thank you for being part of our beautiful beginning.'}
-        </p>
-
-        <div className="w-24 h-px bg-[#A68B67]/30 my-4" />
-
-        {/* Footer Navigation Links */}
-        <div className="flex flex-wrap justify-center gap-6 sm:gap-10 text-[11px] uppercase tracking-[0.3em] font-sans text-[#F9F7F2]/70">
-          <a href="#schedule" className="hover:text-[#A68B67] transition-colors">{isAr ? 'البرنامج' : 'Schedule'}</a>
-          <a href="#venue" className="hover:text-[#A68B67] transition-colors">{isAr ? 'المكان' : 'Venue'}</a>
-          <a href="#dresscode" className="hover:text-[#A68B67] transition-colors">{isAr ? 'الملابس' : 'Dress Code'}</a>
-          <a href="#rsvp" className="hover:text-[#A68B67] transition-colors">{isAr ? 'تأكيد الحضور' : 'RSVP'}</a>
-        </div>
-
-        {/* Back to top button */}
-        <button
-          onClick={scrollToTop}
-          className="mt-6 p-3 rounded-full border border-[#A68B67]/40 text-[#A68B67] hover:bg-[#A68B67] hover:text-white transition-all shadow-sm"
-          title={isAr ? 'الرجوع للأعلى' : 'Back to top'}
-        >
-          <ChevronUp className="w-5 h-5" />
-        </button>
-
-        <div className="text-[10px] uppercase tracking-[0.4em] font-sans opacity-40 pt-4">
-          {isAr ? 'دعوة زفاف فاخرة بأسلوب التحرير | جميع الحقوق محفوظة ٢٠٢٦' : 'Editorial Wedding Invitation • Est. 2026'}
+          <div className="flex items-center gap-1.5 text-slate-500">
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <span>{isAr ? 'البورتفوليو المهني الرسمي' : 'Official Professional Portfolio'}</span>
+          </div>
         </div>
 
       </div>
