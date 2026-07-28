@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { PersonalInfo } from '../types';
 import { Phone, Mail, MapPin, Send, MessageSquare, CheckCircle, Clock } from 'lucide-react';
 
@@ -36,7 +37,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ personalInfo, la
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="text-center max-w-3xl mx-auto mb-12"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">
             <Phone className="w-3.5 h-3.5" />
             <span>{isAr ? 'التواصل المباشر' : 'Get In Touch'}</span>
@@ -49,12 +56,18 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ personalInfo, la
               ? 'أرحب بالتواصل بشأن الفرص الوظيفية الإدارية والقانونية والمالية والاستشارية.'
               : 'Open for full-time executive opportunities, legal & financial consultancies, and operational leadership roles.'}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Direct Info Cards */}
-          <div className="lg:col-span-5 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: isAr ? 30 : -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="lg:col-span-5 space-y-4"
+          >
             
             {/* Phone */}
             <a
@@ -127,10 +140,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ personalInfo, la
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Message Form */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: isAr ? -30 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="lg:col-span-7"
+          >
             <div className="p-6 sm:p-8 rounded-3xl bg-slate-800/80 border border-slate-700/80 shadow-2xl relative">
               <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
                 <span>{isAr ? 'أرسل لي رسالة مباشرة' : 'Send Direct Message'}</span>
@@ -219,7 +238,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ personalInfo, la
               </form>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
@@ -227,3 +246,4 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ personalInfo, la
     </section>
   );
 };
+

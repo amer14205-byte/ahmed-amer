@@ -1,6 +1,5 @@
 import React from 'react';
 import { Briefcase, User, GraduationCap, Award, Phone, Languages, PlusCircle, Share2, Lock, Unlock } from 'lucide-react';
-import profilePhoto from '../assets/images/ahmed_amer_profile_1785237337468.jpg';
 
 interface NavbarProps {
   lang: 'ar' | 'en';
@@ -26,13 +25,8 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-blue-600 to-amber-400 p-0.5 shadow-lg shadow-amber-500/20 overflow-hidden shrink-0">
-            <img
-              src={profilePhoto}
-              alt={isAr ? 'أحمد عامر أحمد' : 'Ahmed Amer Ahmed'}
-              className="w-full h-full object-cover rounded-[10px]"
-              referrerPolicy="no-referrer"
-            />
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-blue-600 to-indigo-600 flex items-center justify-center font-extrabold text-base shadow-lg shadow-amber-500/20 text-white shrink-0 border border-slate-700/50">
+            AA
           </div>
           <div>
             <span className="font-bold text-base sm:text-lg block tracking-tight">

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { EducationItem } from '../types';
 import { GraduationCap, BookOpen, Award, MapPin, Calendar, CheckCircle2 } from 'lucide-react';
 
@@ -15,7 +16,13 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ educationLis
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="text-center max-w-3xl mx-auto mb-12"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">
             <GraduationCap className="w-3.5 h-3.5" />
             <span>{isAr ? 'المؤهلات والدراسات' : 'Academic Credentials'}</span>
@@ -28,13 +35,17 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ educationLis
               ? 'تجمع الدراسة بين الخلفية القانونية الجامعية العريقة والتقنيات الحديثة في الذكاء الاصطناعي وعلم البيانات.'
               : 'Combining classical legal jurisprudence with modern technical mastery in artificial intelligence and data science.'}
           </p>
-        </div>
+        </motion.div>
 
         {/* Education Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {educationList.map((edu) => (
-            <div
+          {educationList.map((edu, idx) => (
+            <motion.div
               key={edu.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: idx * 0.1, ease: 'easeOut' }}
               className="p-6 sm:p-8 rounded-3xl bg-slate-800/60 border border-slate-700/80 hover:border-blue-500/50 transition-all shadow-xl relative overflow-hidden group"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-bl-full pointer-events-none group-hover:bg-blue-500/10 transition-colors" />
@@ -91,7 +102,7 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ educationLis
                 )}
               </div>
 
-            </div>
+            </motion.div>
           ))}
         </div>
 
@@ -99,3 +110,4 @@ export const EducationSection: React.FC<EducationSectionProps> = ({ educationLis
     </section>
   );
 };
+

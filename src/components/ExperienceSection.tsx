@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ExperienceItem } from '../types';
 import { Briefcase, Building2, Calendar, CheckCircle, PlusCircle, Trash2, Sparkles, ShieldCheck } from 'lucide-react';
 
@@ -22,7 +23,13 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12"
+        >
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold uppercase tracking-wider mb-2">
               <Briefcase className="w-3.5 h-3.5" />
@@ -45,7 +52,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
             <PlusCircle className="w-4 h-4" />
             <span>{isAr ? 'إضافة عمل/شركة جديدة' : 'Add New Role'}</span>
           </button>
-        </div>
+        </motion.div>
 
         {/* Experience Timeline Cards */}
         <div className="space-y-8 relative">
@@ -56,8 +63,12 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
             const isCustom = exp.id.startsWith('custom-');
 
             return (
-              <div
+              <motion.div
                 key={exp.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
                 className={`relative p-6 sm:p-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-[1.005] ${
                   exp.isCurrent
                     ? 'bg-slate-800/90 border-2 border-amber-500/50 shadow-xl shadow-amber-500/10 hover:border-amber-400 hover:shadow-2xl hover:shadow-amber-500/20'
@@ -126,7 +137,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   </ul>
                 </div>
 
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -135,3 +146,4 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
     </section>
   );
 };
+
